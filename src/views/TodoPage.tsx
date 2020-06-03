@@ -8,6 +8,7 @@ import {
 import TodoItem from "../components/TodoItem";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import {CSSVarColors} from "../emotion/variables";
 
 const todoListState = atom({
     key: 'todoListState',
@@ -17,12 +18,12 @@ const todoListState = atom({
 const todoLoadState = atom({
     key: 'todoLoadState',
     default: true
-})
+});
 
 const todoCountState = atom({
     key: 'todoCountState',
     default: 0
-})
+});
 
 interface ITodoPageProps {
     match: {
@@ -41,7 +42,7 @@ const CSSPagination = css({
 
 const CSSPaginationItem = css({
     display: "block",
-    background: "#e6e6e6",
+    background: CSSVarColors.disabled,
     textDecoration: "none",
     color: "#282828",
     padding: "10px 0",
@@ -55,7 +56,7 @@ const CSSPaginationItem = css({
         transform: "scale(1.04)"
     },
     "&.active": {
-        background: "#439688",
+        background: CSSVarColors.primary,
         color: "#fff",
         fontWeight: 400
     }
@@ -65,7 +66,7 @@ const CSSTodoList = css({
     padding: '10px 0',
 
     "&:hover .todo-item": {
-        background: "#f3f3f3"
+        background: CSSVarColors.disabledLight
     },
     "& .todo-item:hover": {
         background: "#fff"
@@ -84,15 +85,15 @@ const TodoPage = ({ match: { params } }: ITodoPageProps) => {
         // So I'm just gonna use slice.
         fetch(`https://jsonplaceholder.typicode.com/todos`)
             .then(res => {
-                setTodoLoadState(false)
-                return res.json()
+                setTodoLoadState(false);
+                return res.json();
             })
             .then(
                 (result) => {
-                    setTodoCount(result.length)
-                    setTodoList(result.slice(Number(params.page)*10-10, Number(params.page)*10))
+                    setTodoCount(result.length);
+                    setTodoList(result.slice(Number(params.page)*10-10, Number(params.page)*10));
                 },
-                (error) => { console.log(error) }
+                (error) => { console.log(error); }
             )
     }, [])
 

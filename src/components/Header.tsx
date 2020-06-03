@@ -2,14 +2,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import { Link } from "react-router-dom";
-
-interface ICSSColors {
-    [key: string]: string
-}
-
-const colors:ICSSColors = {
-    color: "#236358"
-}
+import { CSSVarColors } from "../emotion/variables"
 
 const CSSHeader = css({
     padding: "15px 0",
@@ -20,11 +13,11 @@ const CSSNavItem = css({
     fontSize: 18,
     margin: "0 10px",
     textDecoration: "none",
-    color: colors.color,
+    color: CSSVarColors.primary,
     transition: "color 0.2s",
 
     "&:hover": {
-        color: "#1cb399"
+        color: CSSVarColors.primaryHover
     }
 });
 

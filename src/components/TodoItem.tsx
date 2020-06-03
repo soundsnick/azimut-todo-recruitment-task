@@ -1,6 +1,7 @@
 // this comment tells babel to convert jsx to calls to a function called jsx instead of React.createElement
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { CSSVarColors } from "../emotion/variables";
 
 interface ITodoItemProps {
     item: {
@@ -10,8 +11,8 @@ interface ITodoItemProps {
 }
 
 // Helpers
-const completedToClass = (status: boolean): string => {
-    return status ? "completed" : ""
+const completedToClass = (status: boolean): string | boolean => {
+    return status ? "completed" : "incompleted"
 }
 
 // CSS
@@ -39,12 +40,12 @@ const CSSTodoStatus = ({
     display: "block",
     flex: "0 0 50px",
     height: 50,
-    backgroundColor: "#e6e6e6",
+    backgroundColor: CSSVarColors.disabled,
     borderRadius: "100%",
     marginRight: 20,
 
     "&[data-state='completed']": {
-        backgroundColor: "#009688"
+        backgroundColor: CSSVarColors.primary
     }
 });
 
