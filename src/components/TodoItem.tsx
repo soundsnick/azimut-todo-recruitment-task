@@ -36,7 +36,7 @@ const CSSTodoItem = css({
     }
 });
 
-const CSSTodoStatus = ({
+const CSSTodoStatus = css({
     display: "block",
     flex: "0 0 50px",
     height: 50,

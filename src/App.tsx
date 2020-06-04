@@ -2,13 +2,11 @@ import './App.css'
 
 import React from 'react';
 import {
-    RecoilRoot,
-    atom
+    RecoilRoot
 } from 'recoil';
 import {
     Switch,
-    Route,
-    Link
+    Route
 } from 'react-router-dom';
 import Home from './views/Home';
 import Header from './components/Header';
